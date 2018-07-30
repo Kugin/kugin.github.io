@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Java基础 当对象中自定义了 writeObject 和 readObject 方法时，JVM 会调用这两个自定义方法来实现序列化与反序列化。( ArrayList 只序列化了被使用的数据。) hashCode()值影响HashSet等,添加时会将不同值识别为不一样的实例,即使equals()相等的情况. 理想的散列函数应当具有均匀性，即不相等的实例应当均匀分布到所有可能的散列值上。这就要求了散">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018-short">
+<meta property="og:url" content="http://kugin.me/2018/07/25/2018-short/index.html">
+<meta property="og:site_name" content="snail">
+<meta property="og:description" content="Java基础 当对象中自定义了 writeObject 和 readObject 方法时，JVM 会调用这两个自定义方法来实现序列化与反序列化。( ArrayList 只序列化了被使用的数据。) hashCode()值影响HashSet等,添加时会将不同值识别为不一样的实例,即使equals()相等的情况. 理想的散列函数应当具有均匀性，即不相等的实例应当均匀分布到所有可能的散列值上。这就要求了散">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-26T12:04:21.838Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018-short">
+<meta name="twitter:description" content="Java基础 当对象中自定义了 writeObject 和 readObject 方法时，JVM 会调用这两个自定义方法来实现序列化与反序列化。( ArrayList 只序列化了被使用的数据。) hashCode()值影响HashSet等,添加时会将不同值识别为不一样的实例,即使equals()相等的情况. 理想的散列函数应当具有均匀性，即不相等的实例应当均匀分布到所有可能的散列值上。这就要求了散">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kugin.me/2018/07/25/2018-short/"/>
+
+
+
+
+
+  <title>2018-short | snail</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-71773916-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?45e1e5036ddd20856f10e3fb12d50b50";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">snail</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kugin.me/2018/07/25/2018-short/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kugin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://lc-dv7rm0ey.cn-n1.lcfile.com/13ff4fa8d3e7eb868911.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="snail">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2018-short</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-25T23:45:04+08:00">
+                2018-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/碎片/" itemprop="url" rel="index">
+                    <span itemprop="name">碎片</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/25/2018-short/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/25/2018-short/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/07/25/2018-short/" class="leancloud_visitors" data-flag-title="2018-short">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h3><ul>
+<li>当对象中自定义了 writeObject 和 readObject 方法时，JVM 会调用这两个自定义方法来实现序列化与反序列化。( ArrayList 只序列化了被使用的数据。)</li>
+<li>hashCode()值影响HashSet等,添加时会将不同值识别为不一样的实例,即使equals()相等的情况.</li>
+<li>理想的散列函数应当具有均匀性，即不相等的实例应当均匀分布到所有可能的散列值上。这就要求了散列函数要把所有域的值都考虑进来，可以将每个域都当成 R 进制的某一位，然后组成一个 R 进制的整数。R 一般取 31，因为它是一个奇素数，如果是偶数的话，当出现乘法溢出，信息就会丢失，因为与 2 相乘相当于向左移一位。</li>
+<li>toString() 返回 @ 后面的数值为散列码的无符号十六进制表示<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> getClass().getName() + <span class="string">"@"</span> + Integer.toHexString(hashCode());</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>clone() 是 Object 的受保护方法，这意味着，如果一个类不显式去覆盖 clone() 就没有这个方法。<ul>
+<li>应该注意的是，clone() 方法并不是 Cloneable 接口的方法，而是 Object 的一个 protected 方法。Cloneable 接口只是规定，如果一个类没有实现 Cloneable 接口又调用了 clone() 方法，就会抛出 CloneNotSupportedException。</li>
+</ul>
+</li>
+<li>浅拷贝：拷贝实例和原始实例的引用类型引用同一个对象；super.clone()</li>
+<li>深拷贝：拷贝实例和原始实例的引用类型引用不同对象。super.clone 后 再对实例变量new新的实例变量<ul>
+<li>使用 clone() 方法来拷贝一个对象即复杂又有风险，它会抛出异常，并且还需要类型转换。Effective Java 书上讲到，最好不要去使用 clone()，可以使用拷贝构造函数或者拷贝工厂来拷贝一个对象。</li>
+</ul>
+</li>
+<li>从 Java 8 开始，接口也可以拥有默认的方法实现，这是因为不支持默认方法的接口的维护成本太高了。在 Java 8 之前，如果一个接口想要添加新的方法，那么要修改所有实现了该接口的类。<ul>
+<li>接口的成员（字段 + 方法）默认都是 public 的，并且不允许定义为 private 或者 protected。</li>
+<li>接口的字段默认都是 static 和 final 的</li>
+</ul>
+</li>
+<li>抽象类与接口<ul>
+<li>从设计层面上看，抽象类提供了一种 IS-A 关系，那么就必须满足里式替换原则，即子类对象必须能够替换掉所有父类对象。而接口更像是一种 LIKE-A 关系，它只是提供一种方法实现契约，并不要求接口和实现接口的类具有 IS-A 关系。</li>
+<li>从使用上来看，一个类可以实现多个接口，但是不能继承多个抽象类。</li>
+<li>接口的字段只能是 static 和 final 类型的，而抽象类的字段没有这种限制。</li>
+<li>接口的方法只能是 public 的，而抽象类的方法可以由多种访问权限。</li>
+</ul>
+</li>
+<li>String 不可变,线程安全;StringBuilder 可变 线程不安全;StringBuffer 可变 线程安全,内部使用synchronized来同步</li>
+<li><p>Strin 不可变原因:</p>
+<ul>
+<li>可以缓存hash值, 因为String的hash值被经常使用,如充当map的key,不可变的特性使得hash值不可变,因此只需要进行一次计算</li>
+<li>String Pool 的需要</li>
+<li>安全性,经常被作为参数,不可变的特性保证参数不可变</li>
+<li>线程安全<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="keyword">new</span> String(<span class="string">"aaa"</span>);</span><br><span class="line">String s2 = <span class="keyword">new</span> String(<span class="string">"aaa"</span>);</span><br><span class="line">System.out.println(s1 == s2);           <span class="comment">// false</span></span><br><span class="line">String s3 = s1.intern();</span><br><span class="line">System.out.println(s1.intern() == s3);  <span class="comment">// true</span></span><br><span class="line">String s4 = <span class="string">"bbb"</span>;</span><br><span class="line">String s5 = <span class="string">"bbb"</span>;</span><br><span class="line">System.out.println(s4 == s5);  <span class="comment">// true</span></span><br><span class="line"><span class="comment">// new String(""); 不会放入常量池?</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>在 Java 7 之前，字符串常量池被放在运行时常量池中，它属于永久代。而在 Java 7，字符串常量池被放在堆中。这是因为永久代的空间有限，在大量使用字符串的场景下会导致 OutOfMemoryError 错误。</p>
+</li>
+<li>new Integer(123) 与 Integer.valueOf(123) 的区别在于，new Integer(123) 每次都会新建一个对象，而 Integer.valueOf(123) 可能会使用缓存对象，因此多次使用 Integer.valueOf(123) 会取得同一个对象的引用。</li>
+<li>编译器会在自动装箱过程调用 valueOf() 方法，因此多个 Integer 实例使用自动装箱来创建并且值相同，那么就会引用相同的对象。</li>
+<li><p>在 Java 8 中，Integer 缓存池的大小默认为 -128~127</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">        <span class="keyword">return</span> IntegerCache.cache[i + (-IntegerCache.low)];</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Integer(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>java的缓冲池:</p>
+<ul>
+<li>boolean values true and false</li>
+<li>all byte values</li>
+<li>short values between -128 and 127</li>
+<li>int values between -128 and 127</li>
+<li>char in the range \u0000 to \u007F</li>
+</ul>
+</li>
+<li><p>从 Java 7 开始，可以在 switch 条件判断语句中使用 String 对象。 switch不支持long</p>
+</li>
+<li>Java 主要排序方法为 java.util.Arrays.sort()，对于原始数据类型使用三向切分的快速排序，对于引用类型使用归并排序。</li>
+</ul>
+<hr>
+<h3 id="MySql表级锁与行级锁"><a href="#MySql表级锁与行级锁" class="headerlink" title="MySql表级锁与行级锁"></a>MySql表级锁与行级锁</h3><ul>
+<li>MyISAM和MEMORY存储引擎采用的是表级锁<ul>
+<li>表级锁两种模式:<ol>
+<li>表共享读锁</li>
+<li>表独占写锁</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>InnoDB既支持行级锁,也支持表级锁,默认情况下采取行级锁</li>
+</ul>
+<hr>
+<h3 id="Java并发"><a href="#Java并发" class="headerlink" title="Java并发"></a>Java并发</h3><ul>
+<li>线程状态:<ul>
+<li>New:创建后尚未启动</li>
+<li>Runnable:可能正在运行,也可能正在等待cpu时间片,包含了操作系统线程状态中的Running和Ready</li>
+<li>Blocking:等待获取一个==排它锁==,如果其线程释放了锁就会结束此状态</li>
+<li>Waiting:等待其他线程显式的唤醒,否则不会分配cpu时间片<ul>
+<li>未设置Timeout的Object.wait()     |       Object.notify()/Object.notifyAll()</li>
+<li>未设置Timeout的Thread.join()     |       被调用的方法执行完毕</li>
+<li>LockSupport.park()</li>
+</ul>
+</li>
+<li>Timed Waiting:无需等待其他线程显式的唤醒,在一定时间后会被系统自动唤醒 (sleep’线程睡眠’,wait’线程’挂起,睡眠与挂起描述行为,阻塞和等待描述状态;阻塞是被动的,等待获取一个排它锁,而等待是主动的,由sleep和wait等方法进入)<ul>
+<li>Thread.sleep()        |      时间结束</li>
+<li>设置Timeout的Object.wait()        |       时间结束/Object.notify()/Object.notifyAll()</li>
+<li>设置Timeout的Thread.join          |       时间结束/被调用的线程执行完毕</li>
+<li>LockSupport.parkNanos()</li>
+<li>LockSupport.parkUntil()</li>
+</ul>
+</li>
+<li>Terminated:可以是线程结束任务后自己结束,或者产生了异常结束</li>
+</ul>
+</li>
+<li>线程使用<ul>
+<li>实现Runnable</li>
+<li>实现Callable, 与 Runnable 相比，Callable 可以有返回值，返回值通过 FutureTask 进行封装。==Callable==还可以抛异常</li>
+<li>继承Thread</li>
+</ul>
+</li>
+<li>Executor<ul>
+<li>管理多个==异步==任务的执行,而无需显式地管理线程的生命周期</li>
+<li>CachedThreadPool  一个任务创建一个线程</li>
+<li>FixedThreadPool   所有任务只能使用固定大小的线程</li>
+<li>SingleThreadExecutor  大小为1的FixedThreadPool</li>
+<li>线程池最好不要用Executors去创建,而是通过ThreadPoolExecutor的方式,这样写可以让人更明确线程池的运行规则,避免资源耗尽的风险</li>
+<li>Executors 各个方法的弊端<ul>
+<li>newFixedThreadPool 与 newSingleThreadExecutor<ul>
+<li>主要问题是堆积的请求处理队列可能会耗费非常大的内存,甚至OOM</li>
+</ul>
+</li>
+<li>newCachedThreadPool 与 newScheduledThreadPool<ul>
+<li>主要问题是线程数最大数是Integer.MAX_VALUE,可能会创建非常多的线程,甚至OOM</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Daemon 守护线程时程序运行时在后台提供服务的线程,不属于程序中不可或缺的部分.当所有非守护线程结束时,程序也就终止,同时会杀死掉所有守护线程,main()属于==非守护线程==<ul>
+<li>setDaemon()将线程设置为守护线程</li>
+</ul>
+</li>
+<li>sleep() 线程睡眠,会抛出InterruptedException,因==异常不能跨线程传播==回main()中,故必须在本地进行处理.线程中抛出的其它异常也同样需要在本地进行处理。</li>
+<li>yield() 该方法只是对线程调度的一个建议,而且也只是建议具有相同优先级的其它线程可以运行</li>
+<li>interrupt() 调用该方法,如果线程处于阻塞,限期等待或无限期等待,则会抛出InterruptedException,从而提前结束而不执行之后的语句</li>
+<li>interrupted() 如果一个线程的run方法执行了一个无线循环,并且没有执行sleep()等会抛出InterruptedException的操作,那么调用interrupt()方法就无法使线程提前结束.<ul>
+<li>但是调用 interrupt() 方法会设置线程的中断标记,此时调用interrupted()方法会返回true.因此可以在循环体中使用interrupted()方法来判断是否处于中断状态,从而提前结束线程</li>
+</ul>
+</li>
+<li>Executor的shutdown()方法 会等待每个线程都执行完毕,shutdownNow() 相当于调用每个线程的interrupt()方法.<ul>
+<li>如果只想中断Executor中的一个线程,可以通过使用submit()方法来提交一个线程,它会返回一个Future&lt;?&gt;对象,通过调用该对象的cancle() 方法来中断线程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>互斥同步:Java提供了两种机制来控制多个线程对共享资源的互斥访问<ul>
+<li>JVM实现的synchronized<ul>
+<li>同步一个代码块: 对象锁 ==synchronized(this)==; 类锁 ==synchronized(XXX.class)==</li>
+<li>同步一个方法: 对象锁</li>
+<li>同步一个类 : 类锁     synchronized(XXX.class)</li>
+<li>同步一个==静态==方法: 类锁</li>
+</ul>
+</li>
+<li>JDK实现的ReentrantLock<ul>
+<li>等待可中断<ul>
+<li>当持有的线程长期不释放锁的时候,正在等待的线程可以选择放弃等待,改为处理其他事情,可中断性对处理时间非常长的同步块很有帮助</li>
+</ul>
+</li>
+<li>可实现公平锁<ul>
+<li>公平锁是指多个线程在等待同一个锁时,必须按照申请锁的时间顺序来获得锁;而非公平锁不保证这一点,在锁被释放时,任何一个等待锁的线程都有可能.synchronized是非公平的,ReetrantLock默认也是非公平的,但可以通过带布尔值的构造函数要求使用公平锁.</li>
+</ul>
+</li>
+<li><font color="blue">锁绑定多个条件</font><ul>
+<li>一个ReentrantLock对象可以绑定多个Condition对象,而在synchronized中,锁对象的wait()和notify()或notifyAll()方法可以实现一个隐含的条件,如果要和多于一个的条件关联的时候,就不得不额外添加一个锁,而ReentrantLock无需这样做,只需要多次调用newCondition()方法即可.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>除非需要使用ReetrantLock的高级功能,优先选择synchronized,不用担心没有释放锁而导致的死锁,因为JVM原生支持它.(新版本Java对synchronized做了很多优化,如<font color="blue">自旋锁</font>等)</li>
+</ul>
+</li>
+<li>线程间的协作:当多个线程一起去协作处理任务时,如果某些部分必须在其他部分之前完成,那么就需要对线程进行协调.<ul>
+<li>join() 在线程中调用另一个线程的join()方法,会将当前线程挂起,而不是<font color="blue">忙等待</font>,直到目标线程结束</li>
+<li>wait() notify() notifyAll() ==只能在同步方法或同步控制块中使用==,否则会在运行时抛出IllegalMonitorStateException.<ul>
+<li>使用wait()挂起期间,线程会释放锁.这是因为,如果没有释放锁,那么其他线程就无法进入到对象的同步方法或者同步控制块中,那么就无法执行notify()或notifyAll()来唤醒线程,而造成死锁.</li>
+<li>而sleep()方法不会释放锁.</li>
+</ul>
+</li>
+<li>await() signal() signalAll() 在Condition上调用await()方法使线程等待.相比于wait()这种方式,await()可以指定等待的条件,因此更加灵活</li>
+</ul>
+</li>
+<li>J.U.C - AQS<ul>
+<li>CountdownLatch 用来控制一个线程等待多个线程,维护了一个计数器cnt,每次调用 countDown()方法时,计数器减1,减到0的时候,那些因为调用await()方法而在等待的线程就会被唤醒.</li>
+<li>CyclicBarrier 用来控制多个线程互相等待,只有当多个线程都到达时,这些线程才会继续执行.它的计数器是递增的,每次调用await()方法使计数器加1,直到计数器的值和设置的值1相等,等待的所有线</li>
+<li>Semaphore 就是操作系统中的信号量,可以控制对互斥资源的访问线程数</li>
+</ul>
+</li>
+<li>J.U.C - 其他组件<ul>
+<li>FutureTask<v> -&gt;  RunnableFuture<v>   -&gt;  Runnable, Future<v></v></v></v></li>
+<li>BlockingQueue<ul>
+<li>FIFO队列:LinkedBlockingQueue 和 ArrayBlockingQueue(固定长度)</li>
+<li>优先级队列:PriorityBlockingQueue</li>
+</ul>
+</li>
+<li>ForkJoin 主要用于并行计算中,和MapReduce原理类似,都是把大任务拆分成了小任务并行计算.<ul>
+<li>ForkJoin使用ForkJoinPool来启动,它是一个特殊的线程池,线程数量取决于CPU核数 (ForkJoinPool extends AbstractExecutorService)</li>
+<li>ForkJoinPool 实现了<font color="blue">工作窃取算法</font>来提高CPU的利用率.每个线程维护一个==双端队列==,用来存储要执行的任务.工作窃取算法允许空闲的线程从其他的线程双端队列中窃取一个任务来执行.窃取的任务必须是最晚的任务,避免和队列所属线程发生竞争.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>守护线程在退出的时候并不会执行finnaly块中的代码，所以将释放资源等操作不要放在finnaly块中执行，这种操作是不安全的  (置守护线程要先于start()方法,否则会抛异常IllegalThreadStateException 但是该线程还是会执行，只不过会当做正常的用户线程执行。)</li>
+</ul>
+<hr>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li>代理的四种方式<ul>
+<li>远程代理(Remote Proxy):控制远程对象(不同地址空间)的访问,它负责将请求及其参数进行编码,并向不同地址空间中的对象发送已经编码的请求.</li>
+<li>虚拟代理(Virtual Proxy):根据需要创建开销很大的对象,它可以缓存实体的附加信息,以便延迟对它的访问,例如在网站加载一个很大图片时,不能马上完成,可以用虚拟代理缓存图片的大小信息,然后生成一张临时图片代替原始图片.</li>
+<li>保护代理(Protection Proxy):按权限控制对象的访问,它负责检查调用者是否具有实现一个请求所必须的访问权限.</li>
+<li>智能代理(Reference Proxy):取代了简单的指针,它在访问对象时执行一些附加操作,记录对象的引用次数,比如智能智能,当第一次引用一个持久化对象时,将它装入内存,在访问一个实际对象前,检查是否已经锁定了它,以确保其它对象不能改变它.</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/25/深入理解Java虚拟机/" rel="next" title="深入理解Java虚拟机">
+                <i class="fa fa-chevron-left"></i> 深入理解Java虚拟机
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://lc-dv7rm0ey.cn-n1.lcfile.com/13ff4fa8d3e7eb868911.jpg"
+                alt="Kugin" />
+            
+              <p class="site-author-name" itemprop="name">Kugin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:ctkugin@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java基础"><span class="nav-number">1.</span> <span class="nav-text">Java基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySql表级锁与行级锁"><span class="nav-number">2.</span> <span class="nav-text">MySql表级锁与行级锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java并发"><span class="nav-number">3.</span> <span class="nav-text">Java并发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">4.</span> <span class="nav-text">其他</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kugin</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'dV7rm0eymRi4pGtMgBpNB9kU-gzGzoHsz',
+        appKey: 'jWnqdiNU2oAxAtvki14aPb5s',
+        placeholder: 'comment...',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("dV7rm0eymRi4pGtMgBpNB9kU-gzGzoHsz", "jWnqdiNU2oAxAtvki14aPb5s");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

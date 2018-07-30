@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="多线程的优点 资源利用率更好 eg:对多个文件的读取处理   程序设计在某些情况下更简单 eg:不再需要记录文件读取和处理的状态   程序响应速度更快 eg:服务器应用,监听线程负责监听请求,工作线程负责处理响应请求     多线程的代价 设计更复杂 eg:线程交互,同步等   上下文切换的开销 eg:切换线程时,需要存储当前线程的本地数据,程序指针等   增加资源消耗 除了cpu,线程还需要一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多线程">
+<meta property="og:url" content="http://kugin.me/2017/10/31/多线程/index.html">
+<meta property="og:site_name" content="snail">
+<meta property="og:description" content="多线程的优点 资源利用率更好 eg:对多个文件的读取处理   程序设计在某些情况下更简单 eg:不再需要记录文件读取和处理的状态   程序响应速度更快 eg:服务器应用,监听线程负责监听请求,工作线程负责处理响应请求     多线程的代价 设计更复杂 eg:线程交互,同步等   上下文切换的开销 eg:切换线程时,需要存储当前线程的本地数据,程序指针等   增加资源消耗 除了cpu,线程还需要一">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-1.png">
+<meta property="og:image" content="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-3.png">
+<meta property="og:updated_time" content="2018-07-26T12:04:21.842Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="多线程">
+<meta name="twitter:description" content="多线程的优点 资源利用率更好 eg:对多个文件的读取处理   程序设计在某些情况下更简单 eg:不再需要记录文件读取和处理的状态   程序响应速度更快 eg:服务器应用,监听线程负责监听请求,工作线程负责处理响应请求     多线程的代价 设计更复杂 eg:线程交互,同步等   上下文切换的开销 eg:切换线程时,需要存储当前线程的本地数据,程序指针等   增加资源消耗 除了cpu,线程还需要一">
+<meta name="twitter:image" content="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://kugin.me/2017/10/31/多线程/"/>
+
+
+
+
+
+  <title>多线程 | snail</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-71773916-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?45e1e5036ddd20856f10e3fb12d50b50";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">snail</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kugin.me/2017/10/31/多线程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kugin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://lc-dv7rm0ey.cn-n1.lcfile.com/13ff4fa8d3e7eb868911.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="snail">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">多线程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-31T20:40:27+08:00">
+                2017-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/碎片/" itemprop="url" rel="index">
+                    <span itemprop="name">碎片</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/31/多线程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/31/多线程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/31/多线程/" class="leancloud_visitors" data-flag-title="多线程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>多线程的优点<ol>
+<li>资源利用率更好<ul>
+<li>eg:对多个文件的读取处理</li>
+</ul>
+</li>
+<li>程序设计在某些情况下更简单<ul>
+<li>eg:不再需要记录文件读取和处理的状态</li>
+</ul>
+</li>
+<li>程序响应速度更快<ul>
+<li>eg:服务器应用,监听线程负责监听请求,工作线程负责处理响应请求</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>多线程的代价<ol>
+<li>设计更复杂<ul>
+<li>eg:线程交互,同步等</li>
+</ul>
+</li>
+<li>上下文切换的开销<ul>
+<li>eg:切换线程时,需要存储当前线程的本地数据,程序指针等</li>
+</ul>
+</li>
+<li>增加资源消耗<ul>
+<li>除了cpu,线程还需要一些内存来维持它本地的堆栈.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>并发模型:类似于分布式系统中使用的体系结构,==并发系统==中==线程==间可以相互通信,==分布式系统==中==进程==间也可相互通信(进程有可能存在不同的机器中)</p>
+<ol>
+<li>并行工作者<ul>
+<li><img src="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-1.png" alt="image"></li>
+<li>委派者将传入的作业分配给不同的工作者,每个工作者完成==整个任务==,工作者们并行运作在不同的线程上,甚至可能在不同的cpu.</li>
+<li>优点:容易被理解,只需添加更多的工作者来提高系统的并行度</li>
+<li>缺点:<ol>
+<li>共享状态可能会很复杂:线程需要避免竞态,死锁以及很多其他共享状态的并发性问题.(数据修改需要同步到主存中,不仅仅将数据保存在执行这个线程的cpu的缓存中).此外,在等待访问共享数据时,线程之间的互相等待将丢失部分并行性.高竞争基本上会导致执行时出现一定程度的串行化.==非阻塞并发算法==降低竞争.==可持久化的数据结构==(如String类,CopyOnWriteArrayList类)也是一种降低竞争的选择,新引用,旧引用.</li>
+<li>无状态的工作者:工作者在每次需要的时候都必须重读状态,工作者无法在内部保存这个状态(每次需要时可以重读)称为无状态的.</li>
+<li>任务顺序是不确定的,难以保证一个作业在另一个作业之前执行</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>流水线模式(反应器系统,事件驱动系统)<ul>
+<li><img src="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-3.png" alt="image"></li>
+<li>工作者之间不会共享状态,也称为无共享并行模型</li>
+<li>通常使用非阻塞IO来设计流水线并发模型</li>
+<li>实际应用中,流水线不会只有一条,会有多条不同的虚拟流水线同时运行.</li>
+<li>作业也有可能被转发到一个工作者上并发处理</li>
+<li>反应器,事件驱动系统:系统内的工作者对系统内出现的事件作出反应,这些事件也有可能来自于外部世界或者其他工作者.</li>
+<li>Actors &amp; Channels:<ul>
+<li>Actor模型中每个工作者被称为Actor,Actor之间可以直接异步的发送和处理消息,Acotr可以被用来实现一个或多个作业流水线</li>
+<li>Channel模型中,工作者之间不能直接进行通信,它们在不同的通道中发布自己的消息(事件).其他工作者可以在这些通道上监听消息,发送者无需知道谁在监听.</li>
+</ul>
+</li>
+<li>优点:<ul>
+<li>无需共享状态</li>
+<li>有状态的工作者:在工作者确保没有别的线程可以修改他的数据时,他可以在内存中保存需要操作的数据,只是在最后需要更改时写回到外部存储系统.即是 有状态的比无状态的工作者拥有更高的性能.</li>
+<li>较好的硬件整合(mechanical sympathy)</li>
+<li>合理的作业顺序:作业的有序性,使得更容易的推算出系统在某个时间点得状态</li>
+</ul>
+</li>
+<li>缺点:<ul>
+<li>作业的执行分布在了多个工作者上,并因此分不到项目的多个类上.这导致在追踪某个作业到底被什么代码执行变得困难.同样,加大了代码编写难度(eg:回调地狱..)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>函数式并行<ul>
+<li>基本思想是采用函数调用实现程序,函数之间像流水线模型(AKA反应器或者事件驱动系统)那样互相发送消息,一个函数调用另一个函数,类似于消息发送.</li>
+<li>函数都是通过拷贝来传递参数的,所以除了接收函数外没有实体可以操作数据,这对于避免共享数据的竞态是很有必要的,同样也使得函数的执行类似于原子操作,每个函数的执行独立于其他函数的调用</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>创建线程的4种方式:</p>
+<ol>
+<li>Thread</li>
+<li>Runnable</li>
+<li>Callable</li>
+<li>Executor</li>
+</ol>
+</li>
+<li>竞态条件 &amp; 临界区<ul>
+<li>当两个线程竞争同一个资源时,如果对资源的访问顺序敏感,就称存在竞态条件;导致竞态条件发生的代码区称为临界区</li>
+</ul>
+</li>
+<li>线程安全 &amp; 共享资源<ul>
+<li>允许被多个线程同时执行的代码称作2线程安全的代码,线程安全的代码不包含竞态条件</li>
+<li>局部变量:存储在自己的栈中,永远不会被多个线程共享,所以基础类型的局部变量是线程安全的.</li>
+<li>局部的对象引用:引用本省没有被共享,但引用所指的对象并没有存储在线程的栈内,所有的对象都存在共享堆中.如果在某个方法中创建的对象不会逃逸出(即该对象不会被其他方法获得,也不会被非局部变量引用)该方法.这是线程安全的.</li>
+<li>对象成员:存储在堆上,如果两个线程同时更新一个对象的同一个成员,那这个代码就不是线程安全的</li>
+<li>线程控制逃逸规则:如果一个资源的创建,使用,销毁都在一个线程中完成,且永远不会脱离该线程的控制,则该线程的使用是线程安全的.</li>
+</ul>
+</li>
+<li>线程安全 &amp; 不可变性<ul>
+<li>可以通过不变的共享变量来实现线程安全(eg:没有setter,仅有设值构造函数)</li>
+<li>引用不是线程安全的:即使一个对象是线程安全的不可变,指向这个对象的引用也可能不是线程安全的</li>
+</ul>
+</li>
+<li>Java内存模型</li>
+<li>Java同步关键字(synchronized)\<ul>
+<li>实例方法<ul>
+<li>同步在拥有该方法的对象</li>
+</ul>
+</li>
+<li>静态方法<ul>
+<li>同步在该方法所在的类对象</li>
+</ul>
+</li>
+<li>实例方法中的同步块<ul>
+<li>同步在监视器对象</li>
+</ul>
+</li>
+<li>静态方法中的同步块<ul>
+<li>同步在该方法所属的类对象</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>线程通信<ul>
+<li>通过共享对象通信<ul>
+<li>在共享对象的变量里设置信号量</li>
+</ul>
+</li>
+<li>忙等待 <ul>
+<li>while(!signal)</li>
+</ul>
+</li>
+<li>wait(),notify(),notifyAll()<ul>
+<li>忙等待并没有对运行等待线程的CPU进行有效的利用,除非平均等待时间非常短.否则,让等待的线程进入睡眠或者非运行状态更为明智,直到它接收到它等待的信号.</li>
+<li>不管是等待线程还是唤醒线程都在同步块里调用wait()和notify().若线程未持有对象锁,将不能调用wait()和notify(),会抛出IllegalMonitorStateException;（校注：JVM是这么实现的，当你调用wait时候它首先要检查下当前线程是否是锁的拥有者，不是则抛出IllegalMonitorStateExcept，参考JVM源码的 1422行。）</li>
+<li>被唤醒的线程必须重新获得监视器对象的锁，才可以退出wait()的方法调用，因为wait方法调用运行在同步块里面</li>
+</ul>
+</li>
+<li>丢失的信号<ul>
+<li>为了避免信号丢失， 用一个变量来保存是否被通知过。在notify前，设置自己已经被通知过。在wait后，设置自己没有被通知过，需要等待通知。</li>
+</ul>
+</li>
+<li>假唤醒<ul>
+<li>为了防止假唤醒,保存信号的成员变量将在一个while循环里接受检查.这样的一个while循环叫做==自旋锁==(目前的JVM实现自旋锁会消耗cpu)</li>
+</ul>
+</li>
+<li>多个线程等待相同信号</li>
+<li>不要在字符串常亮或全局对象中调用wait()</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/21/2017-short/" rel="next" title="2017-short">
+                <i class="fa fa-chevron-left"></i> 2017-short
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/11/大型网站技术架构/" rel="prev" title="大型网站技术架构">
+                大型网站技术架构 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://lc-dv7rm0ey.cn-n1.lcfile.com/13ff4fa8d3e7eb868911.jpg"
+                alt="Kugin" />
+            
+              <p class="site-author-name" itemprop="name">Kugin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:ctkugin@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kugin</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'dV7rm0eymRi4pGtMgBpNB9kU-gzGzoHsz',
+        appKey: 'jWnqdiNU2oAxAtvki14aPb5s',
+        placeholder: 'comment...',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("dV7rm0eymRi4pGtMgBpNB9kU-gzGzoHsz", "jWnqdiNU2oAxAtvki14aPb5s");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
