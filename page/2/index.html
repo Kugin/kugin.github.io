@@ -258,6 +258,184 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kugin.me/2017/05/21/2017-short/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kugin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://lc-dv7rm0ey.cn-n1.lcfile.com/13ff4fa8d3e7eb868911.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="snail">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/21/2017-short/" itemprop="url">2017-short</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-21T20:22:04+08:00">
+                2017-05-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/碎片/" itemprop="url" rel="index">
+                    <span itemprop="name">碎片</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/21/2017-short/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/05/21/2017-short/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/05/21/2017-short/" class="leancloud_visitors" data-flag-title="2017-short">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="2017"><a href="#2017" class="headerlink" title="2017"></a>2017</h1><ul>
+<li><p>JavaScript 无法处理 Java 的长整型 Long 导致精度丢失</p>
+<ol>
+<li><p>FastJson 处理方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">* &lt;p&gt;</span></span><br><span class="line"><span class="comment">* 消息转换</span></span><br><span class="line"><span class="comment">* &lt;/p&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configureMessageConverters</span><span class="params">(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters)</span> </span>&#123;</span><br><span class="line">   FastJsonHttpMessageConverter fastJsonConverter = <span class="keyword">new</span> FastJsonHttpMessageConverter();</span><br><span class="line">   FastJsonConfig fjc = <span class="keyword">new</span> FastJsonConfig();</span><br><span class="line">   <span class="comment">//1、序列化重点</span></span><br><span class="line">   fjc.setSerializerFeatures(SerializerFeature.BrowserCompatible);</span><br><span class="line">   fastJsonConverter.setFastJsonConfig(fjc);</span><br><span class="line">   converters.add(fastJsonConverter);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JackJson 处理方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、注解处理，这里可以配置公共 baseEntity 处理</span></span><br><span class="line"><span class="meta">@JsonSerialize</span>(using=ToStringSerializer.class)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2、全局配置序列化返回 JSON 处理</span></span><br><span class="line"><span class="keyword">final</span> ObjectMapper objectMapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">objectMapper.configure(JsonGenerator.Feature.WRITE_NUMBERS_AS_STRINGS, <span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/21/2017-short/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://kugin.me/2017/02/28/位运算/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -949,176 +1127,6 @@ CommentURL 服务器提供的URI注释
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kugin.me/2016/11/03/2016-11-03/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kugin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://lc-dv7rm0ey.cn-n1.lcfile.com/13ff4fa8d3e7eb868911.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="snail">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/11/03/2016-11-03/" itemprop="url">七牛云</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-03T21:00:00+08:00">
-                2016-11-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/diary/" itemprop="url" rel="index">
-                    <span itemprop="name">diary</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/11/03/2016-11-03/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2016/11/03/2016-11-03/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/11/03/2016-11-03/" class="leancloud_visitors" data-flag-title="七牛云">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>之前把项目的存储搬到了七牛云（公有空间），今天把其改为了私有空间，私有空间的访问下载地址是经过计算的，其间写了些逗逼代码。</p>
-<p>后台是个SSM程序，将uploadToken的获取，downloUrl转换放在了一个工具action中，返回JSON。在前台全局util.js中写了工具function，ajax请求得到后台的数据，对url的获取同步请求async=true,为了在js中直接转换，不再暂存于标签中（前台请求转换url是个很逗逼的事，稍后说明）。</p>
-<p><code>util.js</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">util=&#123;</span><br><span class="line">  getUploadServer: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"http://up-z2.qiniu.com"</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  initQiNiu:<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    $.post(util.getRootPath()+<span class="string">"/qiniu/qiniu_queryUploadToken.action"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">			<span class="keyword">if</span> (result)&#123;</span><br><span class="line">				<span class="keyword">var</span> token = result.resultBean.message;</span><br><span class="line">				$(<span class="string">'#token'</span>).val(token);</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">"token:"</span>+token);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		$.post(util.getRootPath()+<span class="string">"/qiniu/qiniu_queryDomain.action"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(result)&#123;</span><br><span class="line">				<span class="keyword">var</span> domain= result.resultBean.message;</span><br><span class="line">				$(<span class="string">'#domain'</span>).val(domain);</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">"domain:"</span>+domain);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;,</span><br><span class="line">	getDownloadUrl:<span class="function"><span class="keyword">function</span> (<span class="params">baseUrl</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> src;</span><br><span class="line">		$.ajax(&#123;</span><br><span class="line">			url:util.getRootPath()+<span class="string">"/qiniu/qiniu_queryDownloadUrl.action"</span>,</span><br><span class="line">			data:&#123;<span class="string">"baseUrl"</span>:baseUrl&#125;,</span><br><span class="line">			<span class="keyword">async</span>:<span class="literal">false</span>,</span><br><span class="line">			success:<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">				<span class="keyword">if</span>(result)&#123;</span><br><span class="line">					src = result.resultBean.message;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> src;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>这种实现，使得在前台请求得到后台数据（数据库中存储的是计算前的实际上传地址eg：http://<br>ofn4xb4zs.bkt.clouddn.com/test.jpg）后，需在js中调用getDownlodUrl（url）转换，数据过多且未做分页时网页加载缓慢。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/11/03/2016-11-03/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1173,7 +1181,7 @@ CommentURL 服务器提供的URI注释
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1184,7 +1192,7 @@ CommentURL 服务器提供的URI注释
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

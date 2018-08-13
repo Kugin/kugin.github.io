@@ -79,17 +79,16 @@
 
 
 
-<meta name="description" content="内存区域与内存溢出异常程序计数器 当前线程执行的字节码的行号指示器 线程私有 (Java 多线程是通过线程轮流切换并分配处理器执行时间来实现的)   ==唯一一个没有OOM的区域==  Java虚拟机栈 Java方法执行的内存模型 线程私有 栈帧 用于存储局部变量表,操作数栈,动态链接,方法出口等信息 局部变量表 (所需内存在编译期间完成分配) 基本数据类型 对象引用 returnAddress类">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解Java虚拟机">
 <meta property="og:url" content="http://kugin.me/2018/06/25/深入理解Java虚拟机/index.html">
 <meta property="og:site_name" content="snail">
-<meta property="og:description" content="内存区域与内存溢出异常程序计数器 当前线程执行的字节码的行号指示器 线程私有 (Java 多线程是通过线程轮流切换并分配处理器执行时间来实现的)   ==唯一一个没有OOM的区域==  Java虚拟机栈 Java方法执行的内存模型 线程私有 栈帧 用于存储局部变量表,操作数栈,动态链接,方法出口等信息 局部变量表 (所需内存在编译期间完成分配) 基本数据类型 对象引用 returnAddress类">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-30T15:50:58.429Z">
+<meta property="og:image" content="http://lc-dv7rm0ey.cn-n1.lcfile.com/e61a7135c776d1ff93f8.svg">
+<meta property="og:updated_time" content="2018-08-13T14:11:42.549Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解Java虚拟机">
-<meta name="twitter:description" content="内存区域与内存溢出异常程序计数器 当前线程执行的字节码的行号指示器 线程私有 (Java 多线程是通过线程轮流切换并分配处理器执行时间来实现的)   ==唯一一个没有OOM的区域==  Java虚拟机栈 Java方法执行的内存模型 线程私有 栈帧 用于存储局部变量表,操作数栈,动态链接,方法出口等信息 局部变量表 (所需内存在编译期间完成分配) 基本数据类型 对象引用 returnAddress类">
+<meta name="twitter:image" content="http://lc-dv7rm0ey.cn-n1.lcfile.com/e61a7135c776d1ff93f8.svg">
 
 
 
@@ -371,13 +370,17 @@
       
 
       
-        <h1 id="内存区域与内存溢出异常"><a href="#内存区域与内存溢出异常" class="headerlink" title="内存区域与内存溢出异常"></a>内存区域与内存溢出异常</h1><h2 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h2><ul>
+        <p><img src="http://lc-dv7rm0ey.cn-n1.lcfile.com/e61a7135c776d1ff93f8.svg" alt="image"></p>
+<a id="more"></a>
+<h1 id="内存区域与内存溢出异常"><a href="#内存区域与内存溢出异常" class="headerlink" title="内存区域与内存溢出异常"></a>内存区域与内存溢出异常</h1><h2 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h2><ul>
 <li>当前线程执行的字节码的行号指示器</li>
 <li>线程私有<ul>
 <li>(Java 多线程是通过线程轮流切换并分配处理器执行时间来实现的)</li>
 </ul>
 </li>
-<li>==唯一一个没有OOM的区域==</li>
+<li><font color="orange">唯一一个没有OOM的区域</font>
+
+</li>
 </ul>
 <h2 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h2><ul>
 <li>Java方法执行的内存模型</li>
@@ -443,7 +446,7 @@
 </ul>
 <h2 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h2><ul>
 <li>方法区的一部分<ul>
-<li>==常量池==(是Class文件中的一部分,Java虚拟机对Class文件的每一部分有严格要求,每个字节存储哪种数据)用于存放编译期生成的各种字面量和符号引用,这部分内容将在类加载后进入方法区的==运行时常量池==(Java虚拟机规范没有做任何细节要求)</li>
+<li><font color="orange">常量池<font color="orange">(是Class文件中的一部分,Java虚拟机对Class文件的每一部分有严格要求,每个字节存储哪种数据)用于存放编译期生成的各种字面量和符号引用,这部分内容将在类加载后进入方法区的</font>运行时常量池</font>(Java虚拟机规范没有做任何细节要求)</li>
 <li>Java并不要求常量一定只有编译期才能产生,运行期间也可能有新的常量放入运行时常量池,如 String.intern()</li>
 <li>有OOM</li>
 </ul>
@@ -486,11 +489,11 @@
 <li>对齐填充:这部分不是必然存在的,仅仅起着占位符的作用(HotSpot VM 要求对象的起始地址必须是8字节的整数倍)</li>
 </ul>
 <h2 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h2><ul>
-<li>Java程序通过==栈==上的reference数据来操作堆上的具体对象</li>
+<li>Java程序通过<font color="orange">栈</font>上的reference数据来操作堆上的具体对象</li>
 </ul>
 <ol>
 <li>句柄: reference不需要修改<ul>
-<li>==堆==中划出一部分内容作为句柄池,reference存储句柄地址,而句柄中包含了对象实例数据与类型数据各自的具体地址信息</li>
+<li><font color="orange">堆</font>中划出一部分内容作为句柄池,reference存储句柄地址,而句柄中包含了对象实例数据与类型数据各自的具体地址信息</li>
 <li>好处:在对象被移动(GC时),只会改变句柄中的实例数据指针,而reference本身不需要修改</li>
 </ul>
 </li>
@@ -510,7 +513,7 @@
 <li>虚引用:GC时会有一个系统通知(虚引用无法获得一个对象实例)</li>
 </ul>
 <h3 id="对象死亡"><a href="#对象死亡" class="headerlink" title="对象死亡"></a>对象死亡</h3><ul>
-<li>对象的真正死亡至少要经历==两次==标记过程<ol>
+<li>对象的真正死亡至少要经历<font color="orange">两次</font>标记过程<ol>
 <li>与GC Roots 没有相链接的引用链,会被第一次标记并进行一次筛选(没有覆盖finalize()或finalize()已被虚拟机调用过),将其放入F-Queue中</li>
 <li>GC对F-Queue进行第二次标记. (finalize()是对象在被GC时自我拯救的最后唯一机会,一个对象的finalize()最多只会被系统自动调用一次)</li>
 </ol>
@@ -518,7 +521,7 @@
 </ul>
 <h2 id="回收方法区"><a href="#回收方法区" class="headerlink" title="回收方法区"></a>回收方法区</h2><ul>
 <li>永久代的垃圾收集主要回收两部分内容:废弃常量和无用的类</li>
-<li>判断一个类是否是无用的类,需同时满足3条件才==可以==被回收,并非一定回收,取决于jvm参数设置.<ul>
+<li>判断一个类是否是无用的类,需同时满足3条件才<font color="orange">可以</font>被回收,并非一定回收,取决于jvm参数设置.<ul>
 <li>该类所有的实例都已经被回收,即Java堆中不存在该类的任何实例</li>
 <li>加载该类的ClassLoader已经被回收</li>
 <li>该类对应的java.lang.Class对象没有在任何地方被引用,无法在任何地方通过反射访问该类的方法</li>
@@ -534,13 +537,135 @@
 </ul>
 </li>
 <li>复制算法<ul>
-<li>商业虚拟机多采用此种算法来回收==新生代==</li>
-<li>新生代 Eden:Survivor:Survivor = 8:1:1; 每次使用Eden和其中一块Survivor,GC时把这两块区域中存活的对象复制到剩下的Survivor. 当Survivor空间不够用时,需要依赖==老年代==进行分配担保(Handle Promotion)</li>
+<li>商业虚拟机多采用此种算法来回收<font color="orange">新生代</font></li>
+<li>新生代 Eden:Survivor:Survivor = 8:1:1; 每次使用Eden和其中一块Survivor,GC时把这两块区域中存活的对象复制到剩下的Survivor. 当Survivor空间不够用时,需要依赖<font color="orange">老年代</font>进行分配担保(Handle Promotion)</li>
 <li>不足:在对象存活率较高时要进行较多的复制操作,效率会变低;不浪费空间的情况下,需要额外的空间进行分配担保</li>
 </ul>
 </li>
 <li>标记-整理(Mark-Compact)<ul>
 <li>针对于老年代</li>
+</ul>
+</li>
+<li>分代收集<ul>
+<li>根据对象存活周期将堆分为新生代和老年代</li>
+<li>新生代:复制</li>
+<li>老年代:标记-清除,标记-整理</li>
+</ul>
+</li>
+</ul>
+<h2 id="HotSpot的算法实现"><a href="#HotSpot的算法实现" class="headerlink" title="HotSpot的算法实现"></a>HotSpot的算法实现</h2><ul>
+<li>枚举根节点<ul>
+<li>Stop The World:GC停顿,为了确保可达性分析工作在一致性的快照中进行,不可以出现分析过程中对象引用关系还在不断变化的情况</li>
+<li>OopMap:得知哪些地方存放着引用</li>
+<li>安全点(Safepoint):程序执行时并非在所有地方都停顿下来开始GC,只有在到达安全点才能暂停.”是否具有让程序长时间执行的特征”<ul>
+<li>长时间执行的明显特征:指令序列服用,如方法调用,循环跳转,异常跳转等</li>
+</ul>
+</li>
+<li>GC时让所有线程都跑到最近的安全点再停顿下来<ul>
+<li>抢先式中断(Preemptive Suspension)<ul>
+<li>不需要线程执行代码主动配合,GC发生时,中断所有线程,若不在安全点上,就恢复线程</li>
+</ul>
+</li>
+<li>主动式中断(Voluntary Suspension)<ul>
+<li>各个线程执行时主动轮询中断标志</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>安全区域:线程处于Sleep或者Blocked状态时,无法响应JVM的中断请求.安全区域是指在一段代码片段中,引用关系不会发生变化</li>
+</ul>
+</li>
+</ul>
+<h2 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h2><ul>
+<li>补充<ul>
+<li>并行(Parallel):指多条垃圾收集线程并行工作,但此时用户线程仍处于等待状态</li>
+<li>并发(Concurrent):指用户线程与垃圾收集线程同时执行(但不一定是并行的,可能会交替执行),用户程序在继续运行,而垃圾收集程序运行于另一个CPU上</li>
+<li>JVM Server模式与Client模式, jvm.cfg中设置<ul>
+<li>Server模式:启动缓慢,运行起来后,性能有很大提升(C2编译器)</li>
+<li>Client模式:启动快,默认参数不同(C1编译器)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Serial收集器<ul>
+<li>单线程</li>
+</ul>
+</li>
+<li>ParNew收集器<ul>
+<li>Serial的多线程版本</li>
+<li>ParNew在单CPU的环境中绝对不会有比Serial收集器更好的效果</li>
+</ul>
+</li>
+<li>Paralllel Scavenge收集器<ul>
+<li>新生代,并行</li>
+<li>目标是达到一个可控制的吞吐量(Throughput)<ul>
+<li>吞吐量 = 运行用户代码时间 / (运行用户代码时间 + 垃圾收集时间)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Serial Old收集器<ul>
+<li>单线程</li>
+<li>标记-整理</li>
+<li>Serial的老年代版本</li>
+</ul>
+</li>
+<li>Paralle Old收集器<ul>
+<li>多线程</li>
+<li>标记-整理</li>
+<li>Parallel Scavenge的老年代版本</li>
+</ul>
+</li>
+<li>CMS收集器<ul>
+<li>并发</li>
+<li>标记-清除</li>
+<li>目标是获取最短回收挺短时间</li>
+<li>CMS对CPU资源非常敏感,默认启动的回收线程数:(CPU数量 + 3) / 4</li>
+<li>CMS无法处理浮动垃圾,可能出现”Concurrent Mode Failure”失败而导致另一次Full GC的产生</li>
+</ul>
+</li>
+<li>G1收集器<ul>
+<li>并行与并发</li>
+<li>分带手机</li>
+<li>空间整合<ul>
+<li>整体上标记-整理,局部上复制</li>
+</ul>
+</li>
+<li>可预测的停顿</li>
+</ul>
+</li>
+</ul>
+<h2 id="内存分配与回收策略"><a href="#内存分配与回收策略" class="headerlink" title="内存分配与回收策略"></a>内存分配与回收策略</h2><ul>
+<li>自动内存管理最终自动化解决了两个问题<ol>
+<li>给对象分配内存</li>
+<li>回收分配给对象的内存</li>
+</ol>
+</li>
+<li>对象主要分配在新生的Eden区上,若启用了本地线程分配缓冲,则将按线程优先在TLAB上分配.少数情况下也可能会直接分配在老年代中,</li>
+<li>对象优先在Eden分配,当Eden区没有足够空间进行分配时,发起一次Minor GC<ul>
+<li>新生代总可用空间为 Eden区 + 1个Surivor区的总容量</li>
+<li>分配担保机制,提前移至老年代</li>
+</ul>
+</li>
+<li>大对象直接进入老年代</li>
+<li>长期存活的对象将进入老年代<ul>
+<li>JVM给每个对象定义了一个对象年龄计数器</li>
+<li>如果对象在Eden出生并经过第一次Minor GC后仍然存活,并且能被Survivor容纳的话,将被移动到Survivor中,且对象年龄+1</li>
+<li>对象在Survivor中每熬过一次Minor GC,年龄就将+1. (即年龄增加间接依赖于对象大小)</li>
+</ul>
+</li>
+<li>对象年龄判定<ul>
+<li>如果在Survivor中相同年龄所有对象大小的总和大于Survivor的一半,年龄大于或等于该年龄的对象就可以直接进入老年代,无须等到MaxTenuringThreshold中要求的年龄</li>
+</ul>
+</li>
+<li>空间分配担保<ul>
+<li>Minor GC (check): <ol>
+<li>老年代最大可用连续空间是否大于新生代所有对象的总空间</li>
+<li>是否允许担保失败 (JDK6u24后失效)</li>
+<li>老年代最大可用连续空间是否大于历次晋升到老年代对象的平均大小</li>
+</ol>
+</li>
+<li>Full GC</li>
 </ul>
 </li>
 </ul>
@@ -568,8 +693,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/11/大型网站技术架构/" rel="next" title="大型网站技术架构">
-                <i class="fa fa-chevron-left"></i> 大型网站技术架构
+              <a href="/2018/01/25/2018-short/" rel="next" title="2018-short">
+                <i class="fa fa-chevron-left"></i> 2018-short
               </a>
             
           </div>
@@ -578,8 +703,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/25/2018-short/" rel="prev" title="2018-short">
-                2018-short <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/12/书单/" rel="prev" title="书单">
+                书单 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -664,7 +789,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -675,7 +800,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -720,7 +845,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内存区域与内存溢出异常"><span class="nav-number">1.</span> <span class="nav-text">内存区域与内存溢出异常</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序计数器"><span class="nav-number">1.1.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java虚拟机栈"><span class="nav-number">1.2.</span> <span class="nav-text">Java虚拟机栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地方法栈"><span class="nav-number">1.3.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java堆"><span class="nav-number">1.4.</span> <span class="nav-text">Java堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法区"><span class="nav-number">1.5.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时常量池"><span class="nav-number">1.6.</span> <span class="nav-text">运行时常量池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直接内存"><span class="nav-number">1.7.</span> <span class="nav-text">直接内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的创建"><span class="nav-number">1.8.</span> <span class="nav-text">对象的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的内存布局"><span class="nav-number">1.9.</span> <span class="nav-text">对象的内存布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的访问定位"><span class="nav-number">1.10.</span> <span class="nav-text">对象的访问定位</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#垃圾收集器与内存分配策略"><span class="nav-number">2.</span> <span class="nav-text">垃圾收集器与内存分配策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#回收相关"><span class="nav-number">2.1.</span> <span class="nav-text">回收相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引用"><span class="nav-number">2.1.1.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象死亡"><span class="nav-number">2.1.2.</span> <span class="nav-text">对象死亡</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回收方法区"><span class="nav-number">2.2.</span> <span class="nav-text">回收方法区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾收集算法"><span class="nav-number">2.3.</span> <span class="nav-text">垃圾收集算法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内存区域与内存溢出异常"><span class="nav-number">1.</span> <span class="nav-text">内存区域与内存溢出异常</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序计数器"><span class="nav-number">1.1.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java虚拟机栈"><span class="nav-number">1.2.</span> <span class="nav-text">Java虚拟机栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地方法栈"><span class="nav-number">1.3.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java堆"><span class="nav-number">1.4.</span> <span class="nav-text">Java堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法区"><span class="nav-number">1.5.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时常量池"><span class="nav-number">1.6.</span> <span class="nav-text">运行时常量池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直接内存"><span class="nav-number">1.7.</span> <span class="nav-text">直接内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的创建"><span class="nav-number">1.8.</span> <span class="nav-text">对象的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的内存布局"><span class="nav-number">1.9.</span> <span class="nav-text">对象的内存布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的访问定位"><span class="nav-number">1.10.</span> <span class="nav-text">对象的访问定位</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#垃圾收集器与内存分配策略"><span class="nav-number">2.</span> <span class="nav-text">垃圾收集器与内存分配策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#回收相关"><span class="nav-number">2.1.</span> <span class="nav-text">回收相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引用"><span class="nav-number">2.1.1.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象死亡"><span class="nav-number">2.1.2.</span> <span class="nav-text">对象死亡</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回收方法区"><span class="nav-number">2.2.</span> <span class="nav-text">回收方法区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾收集算法"><span class="nav-number">2.3.</span> <span class="nav-text">垃圾收集算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HotSpot的算法实现"><span class="nav-number">2.4.</span> <span class="nav-text">HotSpot的算法实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾收集器"><span class="nav-number">2.5.</span> <span class="nav-text">垃圾收集器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存分配与回收策略"><span class="nav-number">2.6.</span> <span class="nav-text">内存分配与回收策略</span></a></li></ol></li></ol></div>
             
 
           </div>
