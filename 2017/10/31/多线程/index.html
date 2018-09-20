@@ -88,7 +88,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-1.png">
 <meta property="og:image" content="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-3.png">
-<meta property="og:updated_time" content="2018-08-13T13:35:42.143Z">
+<meta property="og:updated_time" content="2018-09-20T12:43:41.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程">
 <meta name="twitter:description" content="多线程的优点 资源利用率更好 eg:对多个文件的读取处理   程序设计在某些情况下更简单 eg:不再需要记录文件读取和处理的状态   程序响应速度更快 eg:服务器应用,监听线程负责监听请求,工作线程负责处理响应请求     多线程的代价 设计更复杂 eg:线程交互,同步等   上下文切换的开销 eg:切换线程时,需要存储当前线程的本地数据,程序指针等   增加资源消耗 除了cpu,线程还需要一">
@@ -408,14 +408,14 @@
 </ul>
 <a id="more"></a>
 <ul>
-<li><p>并发模型:类似于分布式系统中使用的体系结构,<font color="orange">并发系统==中==线程==间可以相互通信,==分布式系统==中==进程</font>间也可相互通信(进程有可能存在不同的机器中)</p>
+<li><p>并发模型:类似于分布式系统中使用的体系结构,<code>并发系统==中==线程==间可以相互通信,==分布式系统==中==进程</code>间也可相互通信(进程有可能存在不同的机器中)</p>
 <ol>
 <li>并行工作者<ul>
 <li><img src="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-1.png" alt="image"></li>
-<li>委派者将传入的作业分配给不同的工作者,每个工作者完成<font color="orange">整个任务</font>,工作者们并行运作在不同的线程上,甚至可能在不同的cpu.</li>
+<li>委派者将传入的作业分配给不同的工作者,每个工作者完成<code>整个任务</code>,工作者们并行运作在不同的线程上,甚至可能在不同的cpu.</li>
 <li>优点:容易被理解,只需添加更多的工作者来提高系统的并行度</li>
 <li>缺点:<ol>
-<li>共享状态可能会很复杂:线程需要避免竞态,死锁以及很多其他共享状态的并发性问题.(数据修改需要同步到主存中,不仅仅将数据保存在执行这个线程的cpu的缓存中).此外,在等待访问共享数据时,线程之间的互相等待将丢失部分并行性.高竞争基本上会导致执行时出现一定程度的串行化.<font color="orange">非阻塞并发算法==降低竞争.==可持久化的数据结构</font>(如String类,CopyOnWriteArrayList类)也是一种降低竞争的选择,新引用,旧引用.</li>
+<li>共享状态可能会很复杂:线程需要避免竞态,死锁以及很多其他共享状态的并发性问题.(数据修改需要同步到主存中,不仅仅将数据保存在执行这个线程的cpu的缓存中).此外,在等待访问共享数据时,线程之间的互相等待将丢失部分并行性.高竞争基本上会导致执行时出现一定程度的串行化.<code>非阻塞并发算法==降低竞争.==可持久化的数据结构</code>(如String类,CopyOnWriteArrayList类)也是一种降低竞争的选择,新引用,旧引用.</li>
 <li>无状态的工作者:工作者在每次需要的时候都必须重读状态,工作者无法在内部保存这个状态(每次需要时可以重读)称为无状态的.</li>
 <li>任务顺序是不确定的,难以保证一个作业在另一个作业之前执行</li>
 </ol>
@@ -519,7 +519,7 @@
 </ul>
 </li>
 <li>假唤醒<ul>
-<li>为了防止假唤醒,保存信号的成员变量将在一个while循环里接受检查.这样的一个while循环叫做<font color="orange">自旋锁</font>(目前的JVM实现自旋锁会消耗cpu)</li>
+<li>为了防止假唤醒,保存信号的成员变量将在一个while循环里接受检查.这样的一个while循环叫做<code>自旋锁</code>(目前的JVM实现自旋锁会消耗cpu)</li>
 </ul>
 </li>
 <li>多个线程等待相同信号</li>
@@ -638,7 +638,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -649,7 +649,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

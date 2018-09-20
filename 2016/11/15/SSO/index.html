@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="snail">
 <meta property="og:description" content="工作上最近要做几个系统的SSO单点登录，先整理一下知识储备 CookieCookie 是在 HTTP 协议下，服务器或脚本可以维护客户工作站上信息的一种方式。（缺点：Cookie多时，会增加客户端与服务端的数据传输量）  Key/Value形式保存于user-agent Name=Value name是unique的，值只能是ASSIC字符，            (中文可通过URLEncoder">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-25T15:46:47.151Z">
+<meta property="og:updated_time" content="2018-09-20T12:43:41.654Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSO">
 <meta name="twitter:description" content="工作上最近要做几个系统的SSO单点登录，先整理一下知识储备 CookieCookie 是在 HTTP 协议下，服务器或脚本可以维护客户工作站上信息的一种方式。（缺点：Cookie多时，会增加客户端与服务端的数据传输量）  Key/Value形式保存于user-agent Name=Value name是unique的，值只能是ASSIC字符，            (中文可通过URLEncoder">
@@ -385,8 +385,7 @@ Comment    注释项：用途
 CommentURL 服务器提供的URI注释
 </code></pre><a id="more"></a>
 <h3 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h3><p>Session存储于服务端，同一个客户端与服务端交互时，不需要回传所有的Cookie值，只需回传一个ID（第一次访问生成，唯一）。通常是NAME=JSESSIONID的一个Cookie。</p>
-<font color="red">注：只有访问JSP、Servlet等程序时才会创建Session，只访问HTML、IMAGE等静态资源并不会创建Session，可调用request.getSession(true)强制生成Session。</font>
-
+<p><code>注：只有访问JSP、Servlet等程序时才会创建Session，只访问HTML、IMAGE等静态资源并不会创建Session，可调用request.getSession(true)强制生成Session。</code></p>
 <p>三种工作方式：</p>
 <ul>
 <li>URL Path Parameter  （客户端不支持Cookie的解决方案）</li>
@@ -522,7 +521,7 @@ CommentURL 服务器提供的URI注释
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -533,7 +532,7 @@ CommentURL 服务器提供的URI注释
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

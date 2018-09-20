@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="snail">
 <meta property="og:description" content="架构演化 大型网站软件系统的特点 高并发,大流量 高可用 海量数据 用户分布广泛,网络情况复杂 安全环境恶劣 需求快速变更,发布频繁 渐进式发展">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-26T12:04:21.843Z">
+<meta property="og:updated_time" content="2018-09-20T12:43:42.033Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="大型网站技术架构">
 <meta name="twitter:description" content="架构演化 大型网站软件系统的特点 高并发,大流量 高可用 海量数据 用户分布广泛,网络情况复杂 安全环境恶劣 需求快速变更,发布频繁 渐进式发展">
@@ -405,7 +405,7 @@
 </ul>
 </li>
 <li>分布式文件系统和分布式数据库系统<ul>
-<li><font color="red">分布式数据库是网站数据库拆分的最后手段</font></li>
+<li><code>分布式数据库是网站数据库拆分的最后手段</code></li>
 <li>更常用的是业务分库</li>
 </ul>
 </li>
@@ -419,7 +419,7 @@
 </li>
 </ol>
 <ul>
-<li>PS:不要企图用技术解决所有问题:<font color="red">技术架构业务架构</font></li>
+<li>PS:不要企图用技术解决所有问题:<code>技术架构业务架构</code></li>
 </ul>
 <h1 id="架构模式"><a href="#架构模式" class="headerlink" title="架构模式"></a>架构模式</h1><ul>
 <li><p>网站架构模式</p>
@@ -428,7 +428,7 @@
 <li>分割:纵向(业务划分)</li>
 <li>分布式<ul>
 <li>应用和服务</li>
-<li>静态资源(动静分离)<font color="blue">静态资源如何分发?</font></li>
+<li>静态资源(动静分离)<code>静态资源如何分发?</code></li>
 <li>数据和存储</li>
 <li>计算(搜索引擎的索引构建,数据仓库的数据分析统计)</li>
 </ul>
@@ -444,7 +444,7 @@
 </ul>
 </li>
 <li>冗余<ul>
-<li>服务器冗余运行(<font color="blue">zk中的访问转移?</font>)</li>
+<li>服务器冗余运行(<code>zk中的访问转移?</code>)</li>
 <li>数据冗余备份(冷备份,热备份,灾备数据中心)</li>
 </ul>
 </li>
@@ -459,7 +459,7 @@
 <li>安全</li>
 </ul>
 </li>
-<li><p>PS:<font color="blue">MPSS(MultiPort Single Server)</font></p>
+<li><p>PS:<code>MPSS(MultiPort Single Server)</code></p>
 </li>
 </ul>
 <h1 id="架构要素"><a href="#架构要素" class="headerlink" title="架构要素"></a>架构要素</h1><blockquote>
@@ -482,7 +482,7 @@
 </ul>
 </li>
 <li>扩展性<ul>
-<li><font color="blue">事件驱动</font>(消息队列)</li>
+<li><code>事件驱动</code>(消息队列)</li>
 <li>分布式服务(可复用业务)</li>
 </ul>
 </li>
@@ -510,7 +510,7 @@
 </ul>
 </li>
 <li>并发数<ul>
-<li>多线程模拟并发,两次请求间加入一个随机等待时间(<font color="red">思考时间</font>)</li>
+<li>多线程模拟并发,两次请求间加入一个随机等待时间(<code>思考时间</code>)</li>
 </ul>
 </li>
 <li>吞吐量<ul>
@@ -601,7 +601,7 @@
 </ul>
 </li>
 <li>Memcached<ul>
-<li>不互相通信(<font color="blue">如何保证数据完整?</font>)</li>
+<li>不互相通信(<code>如何保证数据完整?</code>)</li>
 <li>通信协议,数据序列化协议</li>
 <li>内存碎片管理<ul>
 <li>固定空间分配,存在内存浪费</li>
@@ -622,7 +622,7 @@
 </li>
 <li><p>代码优化</p>
 <blockquote>
-<p><font color="blue">CGI编程时代</font>,每个用户请求都会创建一个独立的系统进程去进行</p>
+<p><code>CGI编程时代</code>,每个用户请求都会创建一个独立的系统进程去进行</p>
 </blockquote>
 <blockquote>
 <p>启动线程数=[任务执行时间/(任务执行时间-IO等待时间)]*CPU内核数</p>
@@ -630,8 +630,8 @@
 <ul>
 <li>多线程<ul>
 <li>无状态对象<ul>
-<li>Servlet对象,<font color="blue">贫血模型</font>,</li>
-<li><font color="red">无状态对象是一种不良设计</font></li>
+<li>Servlet对象,<code>贫血模型</code>,</li>
+<li><code>无状态对象是一种不良设计</code></li>
 </ul>
 </li>
 <li>局部对象</li>
@@ -640,7 +640,7 @@
 </li>
 <li>资源服用<ul>
 <li>单例模式<ul>
-<li>Spring默认构造的对象都是单例的(<font color="red">Spring的单例是Spring容器管理的单例,而不是用单例模式构造的单例</font>)</li>
+<li>Spring默认构造的对象都是单例的(<code>Spring的单例是Spring容器管理的单例,而不是用单例模式构造的单例</code>)</li>
 </ul>
 </li>
 <li>对象池<ul>
@@ -651,13 +651,13 @@
 </li>
 <li><p>数据结构</p>
 <ul>
-<li><font color="red">HashCode越随机散列,Hash表的冲突越少</font></li>
+<li><code>HashCode越随机散列,Hash表的冲突越少</code></li>
 <li><p>较好hash散列算法:Time33</p>
 <blockquote>
-<p>hash(i) = hash(i-1) * 33 + str[i]</p>
+<p>hash(i) = hash(i-1) - 33 + str[i]</p>
 </blockquote>
 </li>
-<li><p><font color="blue">不适用的应用场景</font> ,可行方案,对字符串取<font color="red">信息指纹</font>,eg:MD5(str)</p>
+<li><p><code>信息指纹</code>,eg:MD5(str)</p>
 </li>
 </ul>
 </li>
@@ -665,11 +665,11 @@
 </ul>
 </li>
 <li>存储性能优化<ul>
-<li><font color="blue">B+树</font><ul>
+<li><code>B+树</code><ul>
 <li>数据库多采用两级索引,树的层次最多三层</li>
 </ul>
 </li>
-<li><font color="blue">LSM树</font><ul>
+<li><code>LSM树</code><ul>
 <li>N阶合并树</li>
 <li>Nosql的主要数据结构,进行一次数据更新不需要磁盘访问,内存中即可完成</li>
 </ul>
@@ -705,7 +705,7 @@
 <li>HDFS<ul>
 <li>以Block为单位管理文件内容,一个文件被分割成若干个Block</li>
 <li>每写完一个Block,HDFS将其自动复制到另外两台机器,保证每个Block有三个副本</li>
-<li><font color="blue">MapReduce</font>并发计算任务</li>
+<li><code>MapReduce</code>并发计算任务</li>
 <li>一个NameNode和多个DataNode</li>
 </ul>
 </li>
@@ -836,7 +836,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -847,7 +847,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

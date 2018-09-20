@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="snail">
 <meta property="og:description" content="Java基础 当对象中自定义了 writeObject 和 readObject 方法时，JVM 会调用这两个自定义方法来实现序列化与反序列化。( ArrayList 只序列化了被使用的数据。) hashCode()值影响HashSet等,添加时会将不同值识别为不一样的实例,即使equals()相等的情况. 理想的散列函数应当具有均匀性，即不相等的实例应当均匀分布到所有可能的散列值上。这就要求了散">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-13T13:22:15.096Z">
+<meta property="og:updated_time" content="2018-09-20T12:43:41.705Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2018-short">
 <meta name="twitter:description" content="Java基础 当对象中自定义了 writeObject 和 readObject 方法时，JVM 会调用这两个自定义方法来实现序列化与反序列化。( ArrayList 只序列化了被使用的数据。) hashCode()值影响HashSet等,添加时会将不同值识别为不一样的实例,即使equals()相等的情况. 理想的散列函数应当具有均匀性，即不相等的实例应当均匀分布到所有可能的散列值上。这就要求了散">
@@ -523,17 +523,17 @@
 <li>公平锁是指多个线程在等待同一个锁时,必须按照申请锁的时间顺序来获得锁;而非公平锁不保证这一点,在锁被释放时,任何一个等待锁的线程都有可能.synchronized是非公平的,ReetrantLock默认也是非公平的,但可以通过带布尔值的构造函数要求使用公平锁.</li>
 </ul>
 </li>
-<li><font color="blue">锁绑定多个条件</font><ul>
+<li><code>锁绑定多个条件</code><ul>
 <li>一个ReentrantLock对象可以绑定多个Condition对象,而在synchronized中,锁对象的wait()和notify()或notifyAll()方法可以实现一个隐含的条件,如果要和多于一个的条件关联的时候,就不得不额外添加一个锁,而ReentrantLock无需这样做,只需要多次调用newCondition()方法即可.</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>除非需要使用ReetrantLock的高级功能,优先选择synchronized,不用担心没有释放锁而导致的死锁,因为JVM原生支持它.(新版本Java对synchronized做了很多优化,如<font color="blue">自旋锁</font>等)</li>
+<li>除非需要使用ReetrantLock的高级功能,优先选择synchronized,不用担心没有释放锁而导致的死锁,因为JVM原生支持它.(新版本Java对synchronized做了很多优化,如<code>自旋锁</code>等)</li>
 </ul>
 </li>
 <li>线程间的协作:当多个线程一起去协作处理任务时,如果某些部分必须在其他部分之前完成,那么就需要对线程进行协调.<ul>
-<li>join() 在线程中调用另一个线程的join()方法,会将当前线程挂起,而不是<font color="blue">忙等待</font>,直到目标线程结束</li>
+<li>join() 在线程中调用另一个线程的join()方法,会将当前线程挂起,而不是<code>忙等待</code>,直到目标线程结束</li>
 <li>wait() notify() notifyAll() ==只能在同步方法或同步控制块中使用==,否则会在运行时抛出IllegalMonitorStateException.<ul>
 <li>使用wait()挂起期间,线程会释放锁.这是因为,如果没有释放锁,那么其他线程就无法进入到对象的同步方法或者同步控制块中,那么就无法执行notify()或notifyAll()来唤醒线程,而造成死锁.</li>
 <li>而sleep()方法不会释放锁.</li>
@@ -557,7 +557,7 @@
 </li>
 <li>ForkJoin 主要用于并行计算中,和MapReduce原理类似,都是把大任务拆分成了小任务并行计算.<ul>
 <li>ForkJoin使用ForkJoinPool来启动,它是一个特殊的线程池,线程数量取决于CPU核数 (ForkJoinPool extends AbstractExecutorService)</li>
-<li>ForkJoinPool 实现了<font color="blue">工作窃取算法</font>来提高CPU的利用率.每个线程维护一个==双端队列==,用来存储要执行的任务.工作窃取算法允许空闲的线程从其他的线程双端队列中窃取一个任务来执行.窃取的任务必须是最晚的任务,避免和队列所属线程发生竞争.</li>
+<li>ForkJoinPool 实现了<code>工作窃取算法</code>来提高CPU的利用率.每个线程维护一个==双端队列==,用来存储要执行的任务.工作窃取算法允许空闲的线程从其他的线程双端队列中窃取一个任务来执行.窃取的任务必须是最晚的任务,避免和队列所属线程发生竞争.</li>
 </ul>
 </li>
 </ul>
@@ -694,7 +694,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -705,7 +705,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

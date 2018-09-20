@@ -258,6 +258,204 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kugin.me/2017/10/31/多线程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kugin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://lc-dv7rm0ey.cn-n1.lcfile.com/13ff4fa8d3e7eb868911.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="snail">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/31/多线程/" itemprop="url">多线程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-31T20:40:27+08:00">
+                2017-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/碎片/" itemprop="url" rel="index">
+                    <span itemprop="name">碎片</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/31/多线程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/31/多线程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/31/多线程/" class="leancloud_visitors" data-flag-title="多线程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <ul>
+<li>多线程的优点<ol>
+<li>资源利用率更好<ul>
+<li>eg:对多个文件的读取处理</li>
+</ul>
+</li>
+<li>程序设计在某些情况下更简单<ul>
+<li>eg:不再需要记录文件读取和处理的状态</li>
+</ul>
+</li>
+<li>程序响应速度更快<ul>
+<li>eg:服务器应用,监听线程负责监听请求,工作线程负责处理响应请求</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>多线程的代价<ol>
+<li>设计更复杂<ul>
+<li>eg:线程交互,同步等</li>
+</ul>
+</li>
+<li>上下文切换的开销<ul>
+<li>eg:切换线程时,需要存储当前线程的本地数据,程序指针等</li>
+</ul>
+</li>
+<li>增加资源消耗<ul>
+<li>除了cpu,线程还需要一些内存来维持它本地的堆栈.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/31/多线程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://kugin.me/2017/05/21/2017-short/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -375,7 +573,7 @@
 <li><p>JavaScript 无法处理 Java 的长整型 Long 导致精度丢失</p>
 <ol>
 <li><p>FastJson 处理方式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">* &lt;p&gt;</span></span><br><span class="line"><span class="comment">* 消息转换</span></span><br><span class="line"><span class="comment">* &lt;/p&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configureMessageConverters</span><span class="params">(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters)</span> </span>&#123;</span><br><span class="line">   FastJsonHttpMessageConverter fastJsonConverter = <span class="keyword">new</span> FastJsonHttpMessageConverter();</span><br><span class="line">   FastJsonConfig fjc = <span class="keyword">new</span> FastJsonConfig();</span><br><span class="line">   <span class="comment">//1、序列化重点</span></span><br><span class="line">   fjc.setSerializerFeatures(SerializerFeature.BrowserCompatible);</span><br><span class="line">   fastJsonConverter.setFastJsonConfig(fjc);</span><br><span class="line">   converters.add(fastJsonConverter);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">- &lt;p&gt;</span></span><br><span class="line"><span class="comment">- 消息转换</span></span><br><span class="line"><span class="comment">- &lt;/p&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configureMessageConverters</span><span class="params">(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters)</span> </span>&#123;</span><br><span class="line">   FastJsonHttpMessageConverter fastJsonConverter = <span class="keyword">new</span> FastJsonHttpMessageConverter();</span><br><span class="line">   FastJsonConfig fjc = <span class="keyword">new</span> FastJsonConfig();</span><br><span class="line">   <span class="comment">//1、序列化重点</span></span><br><span class="line">   fjc.setSerializerFeatures(SerializerFeature.BrowserCompatible);</span><br><span class="line">   fastJsonConverter.setFastJsonConfig(fjc);</span><br><span class="line">   converters.add(fastJsonConverter);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>JackJson 处理方式</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、注解处理，这里可以配置公共 baseEntity 处理</span></span><br><span class="line"><span class="meta">@JsonSerialize</span>(using=ToStringSerializer.class)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2、全局配置序列化返回 JSON 处理</span></span><br><span class="line"><span class="keyword">final</span> ObjectMapper objectMapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">objectMapper.configure(JsonGenerator.Feature.WRITE_NUMBERS_AS_STRINGS, <span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
@@ -549,7 +747,7 @@
 
       
         
-          <p>​    计算机以二进制<font color="red">补码</font>存储数据（有符号位）。</p>
+          <p>​    计算机以二进制<code>补码</code>存储数据（有符号位）。</p>
 <p>​    正数的原码，反码，补码是其本身。</p>
 <p>​    针对于负数：</p>
 <ul>
@@ -560,7 +758,7 @@
 <li><p>补码：在反码的基础上加1。</p>
 <p>为什么用补码？</p>
 <p>a-b=a+(-b); 为了让符号位参与计算，先出现了反码，来解决减法：</p>
-<p>1-1 = 1+(-1)=[0000 0001]<sub>原</sub>+[1000 0001]<sub>原</sub>=[0000 0001]<sub>反</sub>+[1111 1110]<sub>反</sub>=[1111 1110]<sub>反</sub>=[1000 000]<sub>反</sub>=<font color="red">-0</font></p>
+<p>1-1 = 1+(-1)=[0000 0001]<sub>原</sub>+[1000 0001]<sub>原</sub>=[0000 0001]<sub>反</sub>+[1111 1110]<sub>反</sub>=[1111 1110]<sub>反</sub>=[1000 000]<sub>反</sub>=<code>-0</code></p>
 <p>此时，0有两个编码表示法+0[0000 0000]<sub>原</sub>  -0[1000 000]<sub>原</sub>。然后补码的出现解决了0的符号和编码问题。</p>
 <p>  1-1 = 1+(-1)=[0000 0001]<sub>原</sub>+[1000 0001]<sub>原</sub>=[0000 0001]<sub>补</sub>+[1111 1111]<sub>补</sub>=[1111 1110]<sub>补</sub>=[0000 0000]<sub>补</sub>=0</p>
 <p>此时0用[0000 0000]<sub>补</sub>表示，而[1000 0000]<sub>补</sub>表示-128</p>
@@ -958,175 +1156,6 @@ CommentURL 服务器提供的URI注释
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kugin.me/2016/11/03/MultipartRequest/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kugin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://lc-dv7rm0ey.cn-n1.lcfile.com/13ff4fa8d3e7eb868911.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="snail">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/11/03/MultipartRequest/" itemprop="url">MultipartRequest</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-03T22:43:00+08:00">
-                2016-11-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/bug/" itemprop="url" rel="index">
-                    <span itemprop="name">bug</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/11/03/MultipartRequest/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2016/11/03/MultipartRequest/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/11/03/MultipartRequest/" class="leancloud_visitors" data-flag-title="MultipartRequest">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="The-current-request-is-not-a-multipart-request"><a href="#The-current-request-is-not-a-multipart-request" class="headerlink" title="The current request is not a multipart request"></a>The current request is not a multipart request</h1><ul>
-<li>描述<br>Android端使用okhttp,后台接口springmvc，当遇到一个功能模块，上传文件是非必须的条件时，在只传递字符串参数，不带files时报错：”The current request is not a multipart request”</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/11/03/MultipartRequest/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1181,7 +1210,7 @@ CommentURL 服务器提供的URI注释
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1192,7 +1221,7 @@ CommentURL 服务器提供的URI注释
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

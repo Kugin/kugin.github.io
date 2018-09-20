@@ -85,7 +85,7 @@
 <meta property="og:site_name" content="snail">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://lc-dv7rm0ey.cn-n1.lcfile.com/e61a7135c776d1ff93f8.svg">
-<meta property="og:updated_time" content="2018-08-13T14:17:53.594Z">
+<meta property="og:updated_time" content="2018-09-20T12:43:41.796Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解Java虚拟机">
 <meta name="twitter:image" content="http://lc-dv7rm0ey.cn-n1.lcfile.com/e61a7135c776d1ff93f8.svg">
@@ -379,9 +379,7 @@
 <li>(Java 多线程是通过线程轮流切换并分配处理器执行时间来实现的)</li>
 </ul>
 </li>
-<li><font color="orange">唯一一个没有OOM的区域</font>
-
-</li>
+<li><code>唯一一个没有OOM的区域</code></li>
 </ul>
 <h2 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h2><ul>
 <li>Java方法执行的内存模型</li>
@@ -447,7 +445,7 @@
 </ul>
 <h2 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h2><ul>
 <li>方法区的一部分<ul>
-<li><font color="orange">常量池<font color="orange">(是Class文件中的一部分,Java虚拟机对Class文件的每一部分有严格要求,每个字节存储哪种数据)用于存放编译期生成的各种字面量和符号引用,这部分内容将在类加载后进入方法区的</font>运行时常量池</font>(Java虚拟机规范没有做任何细节要求)</li>
+<li><code>(是Class文件中的一部分,Java虚拟机对Class文件的每一部分有严格要求,每个字节存储哪种数据)用于存放编译期生成的各种字面量和符号引用,这部分内容将在类加载后进入方法区的</code>运行时常量池`(Java虚拟机规范没有做任何细节要求)</li>
 <li>Java并不要求常量一定只有编译期才能产生,运行期间也可能有新的常量放入运行时常量池,如 String.intern()</li>
 <li>有OOM</li>
 </ul>
@@ -490,11 +488,11 @@
 <li>对齐填充:这部分不是必然存在的,仅仅起着占位符的作用(HotSpot VM 要求对象的起始地址必须是8字节的整数倍)</li>
 </ul>
 <h2 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h2><ul>
-<li>Java程序通过<font color="orange">栈</font>上的reference数据来操作堆上的具体对象</li>
+<li>Java程序通过<code>栈</code>上的reference数据来操作堆上的具体对象</li>
 </ul>
 <ol>
 <li>句柄: reference不需要修改<ul>
-<li><font color="orange">堆</font>中划出一部分内容作为句柄池,reference存储句柄地址,而句柄中包含了对象实例数据与类型数据各自的具体地址信息</li>
+<li><code>堆</code>中划出一部分内容作为句柄池,reference存储句柄地址,而句柄中包含了对象实例数据与类型数据各自的具体地址信息</li>
 <li>好处:在对象被移动(GC时),只会改变句柄中的实例数据指针,而reference本身不需要修改</li>
 </ul>
 </li>
@@ -514,7 +512,7 @@
 <li>虚引用:GC时会有一个系统通知(虚引用无法获得一个对象实例)</li>
 </ul>
 <h3 id="对象死亡"><a href="#对象死亡" class="headerlink" title="对象死亡"></a>对象死亡</h3><ul>
-<li>对象的真正死亡至少要经历<font color="orange">两次</font>标记过程<ol>
+<li>对象的真正死亡至少要经历<code>两次</code>标记过程<ol>
 <li>与GC Roots 没有相链接的引用链,会被第一次标记并进行一次筛选(没有覆盖finalize()或finalize()已被虚拟机调用过),将其放入F-Queue中</li>
 <li>GC对F-Queue进行第二次标记. (finalize()是对象在被GC时自我拯救的最后唯一机会,一个对象的finalize()最多只会被系统自动调用一次)</li>
 </ol>
@@ -522,15 +520,13 @@
 </ul>
 <h2 id="回收方法区"><a href="#回收方法区" class="headerlink" title="回收方法区"></a>回收方法区</h2><ul>
 <li>永久代的垃圾收集主要回收两部分内容:废弃常量和无用的类</li>
-<li>判断一个类是否是无用的类,需同时满足3条件才<font color="orange">可以</font>被回收,并非一定回收,取决于jvm参数设置.<ul>
+<li>判断一个类是否是无用的类,需同时满足3条件才<code>可以</code>被回收,并非一定回收,取决于jvm参数设置.<ul>
 <li>该类所有的实例都已经被回收,即Java堆中不存在该类的任何实例</li>
 <li>加载该类的ClassLoader已经被回收</li>
 <li>该类对应的java.lang.Class对象没有在任何地方被引用,无法在任何地方通过反射访问该类的方法</li>
 </ul>
 </li>
-<li><font color="blue">在大量使用反射,动态代理,CGLib等ByteCode框架,动态生成JSP及OSGI这类频繁自定义ClassLoader的场景都需要虚拟机具备类卸载的功能,以保证永久代不会溢出</font>
-
-</li>
+<li><code>在大量使用反射,动态代理,CGLib等ByteCode框架,动态生成JSP及OSGI这类频繁自定义ClassLoader的场景都需要虚拟机具备类卸载的功能,以保证永久代不会溢出</code></li>
 </ul>
 <h2 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h2><ul>
 <li>标记-清除(Mark-Sweep)<ul>
@@ -538,8 +534,8 @@
 </ul>
 </li>
 <li>复制算法<ul>
-<li>商业虚拟机多采用此种算法来回收<font color="orange">新生代</font></li>
-<li>新生代 Eden:Survivor:Survivor = 8:1:1; 每次使用Eden和其中一块Survivor,GC时把这两块区域中存活的对象复制到剩下的Survivor. 当Survivor空间不够用时,需要依赖<font color="orange">老年代</font>进行分配担保(Handle Promotion)</li>
+<li>商业虚拟机多采用此种算法来回收<code>新生代</code></li>
+<li>新生代 Eden:Survivor:Survivor = 8:1:1; 每次使用Eden和其中一块Survivor,GC时把这两块区域中存活的对象复制到剩下的Survivor. 当Survivor空间不够用时,需要依赖<code>老年代</code>进行分配担保(Handle Promotion)</li>
 <li>不足:在对象存活率较高时要进行较多的复制操作,效率会变低;不浪费空间的情况下,需要额外的空间进行分配担保</li>
 </ul>
 </li>
@@ -704,6 +700,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/09/20/碎片/" rel="prev" title="碎片">
+                碎片 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -786,7 +786,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -797,7 +797,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

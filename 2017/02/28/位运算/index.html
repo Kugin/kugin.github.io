@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="snail">
 <meta property="og:description" content="​    计算机以二进制补码存储数据（有符号位）。 ​    正数的原码，反码，补码是其本身。 ​    针对于负数：  原码：符号位（1为负数，0为正数）。  反码：（除符号位外）按位取反，符号位不变。  补码：在反码的基础上加1。 为什么用补码？ a-b=a+(-b); 为了让符号位参与计算，先出现了反码，来解决减法： 1-1 = 1+(-1)=[0000 0001]原+[1000 0001]">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-25T14:50:54.501Z">
+<meta property="og:updated_time" content="2018-09-20T12:43:41.940Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="位运算">
 <meta name="twitter:description" content="​    计算机以二进制补码存储数据（有符号位）。 ​    正数的原码，反码，补码是其本身。 ​    针对于负数：  原码：符号位（1为负数，0为正数）。  反码：（除符号位外）按位取反，符号位不变。  补码：在反码的基础上加1。 为什么用补码？ a-b=a+(-b); 为了让符号位参与计算，先出现了反码，来解决减法： 1-1 = 1+(-1)=[0000 0001]原+[1000 0001]">
@@ -371,7 +371,7 @@
       
 
       
-        <p>​    计算机以二进制<font color="red">补码</font>存储数据（有符号位）。</p>
+        <p>​    计算机以二进制<code>补码</code>存储数据（有符号位）。</p>
 <p>​    正数的原码，反码，补码是其本身。</p>
 <p>​    针对于负数：</p>
 <ul>
@@ -382,7 +382,7 @@
 <li><p>补码：在反码的基础上加1。</p>
 <p>为什么用补码？</p>
 <p>a-b=a+(-b); 为了让符号位参与计算，先出现了反码，来解决减法：</p>
-<p>1-1 = 1+(-1)=[0000 0001]<sub>原</sub>+[1000 0001]<sub>原</sub>=[0000 0001]<sub>反</sub>+[1111 1110]<sub>反</sub>=[1111 1110]<sub>反</sub>=[1000 000]<sub>反</sub>=<font color="red">-0</font></p>
+<p>1-1 = 1+(-1)=[0000 0001]<sub>原</sub>+[1000 0001]<sub>原</sub>=[0000 0001]<sub>反</sub>+[1111 1110]<sub>反</sub>=[1111 1110]<sub>反</sub>=[1000 000]<sub>反</sub>=<code>-0</code></p>
 <p>此时，0有两个编码表示法+0[0000 0000]<sub>原</sub>  -0[1000 000]<sub>原</sub>。然后补码的出现解决了0的符号和编码问题。</p>
 <p>  1-1 = 1+(-1)=[0000 0001]<sub>原</sub>+[1000 0001]<sub>原</sub>=[0000 0001]<sub>补</sub>+[1111 1111]<sub>补</sub>=[1111 1110]<sub>补</sub>=[0000 0000]<sub>补</sub>=0</p>
 <p>此时0用[0000 0000]<sub>补</sub>表示，而[1000 0000]<sub>补</sub>表示-128</p>
@@ -399,8 +399,7 @@
 <li>右移 a&gt;&gt;b: 右移位，若为正数高位补0，若为负数高位补1</li>
 <li>无符号右移 a&gt;&gt;&gt;b: 无论正负都在高位补0</li>
 </ul>
-<font color="red">位运算时针对整型的，进行位操作时，除long类型外，其他类型会自动转成整型。注意操作位数，若超出了存储位数则取模运算，eg：对int，（左移33位 等价于左移1位）,（ps:-1左移31再右移31结果为-1）</font>
-
+<p><code>位运算时针对整型的，进行位操作时，除long类型外，其他类型会自动转成整型。注意操作位数，若超出了存储位数则取模运算，eg：对int，（左移33位 等价于左移1位）,（ps:-1左移31再右移31结果为-1）</code></p>
 <h4 id="常见用途"><a href="#常见用途" class="headerlink" title="常见用途"></a>常见用途</h4><table>
 <thead>
 <tr>
@@ -559,7 +558,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -570,7 +569,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
